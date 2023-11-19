@@ -57,6 +57,15 @@ class JurrasicScene(Scene):
         self.buildings1_2 = [DrawModelFromMesh(scene=self, M=np.matmul(translationMatrix([7,0.7,10.5]),scaleMatrix([0.05,0.05,0.05])), mesh=mesh, shader=PhongShader()) for mesh in buildings1_2]
         self.buildings += self.buildings1_2
 
+        #correct place
+        firestation_1 = load_obj_file('models/firestation.obj')
+        self.firestation_1 = [DrawModelFromMesh(scene=self, M=np.matmul(np.matmul(translationMatrix([-3.5,0.7,-0.5]),rotationMatrixY(np.radians(270))),scaleMatrix([0.025,0.025,0.025])), mesh=mesh, shader=PhongShader()) for mesh in firestation_1]
+        self.buildings += self.firestation_1
+
+        #correct place
+        firestation_2 = load_obj_file('models/firestation.obj')
+        self.firestation_2 = [DrawModelFromMesh(scene=self, M=np.matmul(np.matmul(translationMatrix([20.5,0.7,12.5]),rotationMatrixY(np.radians(270))),scaleMatrix([0.025,0.025,0.025])), mesh=mesh, shader=PhongShader()) for mesh in firestation_2]
+        self.buildings += self.firestation_2
 
         #correct place
         largebuilding1_1 = load_obj_file('models/largebuilding.obj')
@@ -69,13 +78,23 @@ class JurrasicScene(Scene):
         self.buildings += self.largebuilding1_2
 
         #correct place
-        firestation_1 = load_obj_file('models/firestation.obj')
-        self.firestation_1 = [DrawModelFromMesh(scene=self, M=np.matmul(np.matmul(translationMatrix([-3.5,0.7,-0.5]),rotationMatrixY(np.radians(270))),scaleMatrix([0.025,0.025,0.025])), mesh=mesh, shader=PhongShader()) for mesh in firestation_1]
-        self.buildings += self.firestation_1
+        largebuilding2_1 = load_obj_file('models/largebuilding2.obj')
+        self.largebuilding2_1 =  [DrawModelFromMesh(scene=self, M=np.matmul(translationMatrix([0.5,-1.5,-5.5]),scaleMatrix([0.08,0.08,0.08])), mesh=mesh, shader=PhongShader()) for mesh in largebuilding2_1]
+        self.buildings += self.largebuilding2_1
 
-        firestation_2 = load_obj_file('models/firestation.obj')
-        self.firestation_2 = [DrawModelFromMesh(scene=self, M=np.matmul(np.matmul(translationMatrix([20.5,0.7,12.5]),rotationMatrixY(np.radians(270))),scaleMatrix([0.025,0.025,0.025])), mesh=mesh, shader=PhongShader()) for mesh in firestation_2]
-        self.buildings += self.firestation_2
+        #correct place
+        largebuilding2_2 = load_obj_file('models/largebuilding2.obj')
+        self.largebuilding2_2 =  [DrawModelFromMesh(scene=self, M=np.matmul(translationMatrix([7,-1.5,17]),scaleMatrix([0.08,0.08,0.08])), mesh=mesh, shader=PhongShader()) for mesh in largebuilding2_2]
+        self.buildings += self.largebuilding2_2
+        
+        #correct place
+        largebuilding3_1 = load_obj_file('models/largebuilding3.obj')
+        self.largebuilding3_1 =  [DrawModelFromMesh(scene=self, M=np.matmul(translationMatrix([0.2,-1.5,7.7]),scaleMatrix([0.1,0.1,0.1])), mesh=mesh, shader=PhongShader()) for mesh in largebuilding3_1]
+        self.buildings += self.largebuilding3_1#
+        
+        largebuilding3_2 = load_obj_file('models/largebuilding3.obj')
+        self.largebuilding3_2 =  [DrawModelFromMesh(scene=self, M=np.matmul(translationMatrix([0.2,-1.5,7.7]),scaleMatrix([0.1,0.1,0.1])), mesh=mesh, shader=PhongShader()) for mesh in largebuilding3_2]
+        self.buildings += self.largebuilding3_2
 
     def draw(self):
         '''
