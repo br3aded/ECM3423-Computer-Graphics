@@ -267,15 +267,20 @@ def fix_blender_textures(textures, faces, vertices):
 	:return: a new texture array indexed according to vertices.
 	'''
 	# (OpenGL, unlike Blender, does not allow for multiple indexing!)
+	if textures.size == 0:
+		return None
 
 	if faces.shape[2] == 1:
 		#print('(W) No texture indices provided, setting texture coordinate array as None!')
 		return None
+	textures = textures.reshape((-1,2))
 
 	new_textures = np.zeros((vertices.shape[0], 2), dtype='f')
 
 	for f in range(faces.shape[0]):
 		for j in range(faces.shape[1]):
-			new_textures[faces[f, j, 0] - 1, :] = textures[faces[f, j, 1] - 1, :]
-
+			# Use modulo to handle negative indices
+			vertex_index = (faces[f,j,0]-1) % vertices.shape[0]
+			texture_index = (faces[f,j,1]-1) % textures.shape[0]
+			new_textures[vertex_index,:] = textures[texture_index,:]
 	return new_textures

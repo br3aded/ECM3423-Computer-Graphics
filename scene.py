@@ -199,12 +199,14 @@ class Scene:
         '''
         Draws the scene in a loop until exit.
         '''
-
+        clock = pygame.time.Clock()
         # We have a classic program loop
         self.running = True
         while self.running:
-
             self.pygameEvents()
 
+            #self.update_dinosaur_animation()
             # otherwise, continue drawing
             self.draw()
+
+            clock.tick(30)

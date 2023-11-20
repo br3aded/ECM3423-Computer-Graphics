@@ -253,7 +253,7 @@ class PhongShader(BaseShaderProgram):
 
         # set the PVM matrix uniform
         self.uniforms['VM'].bind(np.matmul(V, M))
-
+        
         # set the PVM matrix uniform
         self.uniforms['VMiT'].bind(np.linalg.inv(np.matmul(V, M))[:3, :3].transpose())
 
