@@ -2,7 +2,7 @@
 
 Run the scene from the main file 
 
-The combination of animated object and enviroment map causes a large load time and lag so looking at the sepreatly may be better
+The combination of animated object and enviroment map causes a large load time and lag so rendering them at different times could be better.
 
 Animated Object:
 
