@@ -1,15 +1,20 @@
 import numpy as np
 
+#functions for translating matrices
+
+#changes the scale of the model in x,y,z
 def scaleMatrix(s):
     s.append(1)
     return np.diag(s)
 
+#translate the model within the enivroment using x,y,z
 def translationMatrix(t):
     n = len(t)
     T = np.identity(n+1,dtype='f')
     T[:n,-1] = t
     return T
 
+#rotates model around the z axis
 def rotationMatrixZ(angle):
     c = np.cos(angle)
     s = np.sin(angle)
@@ -20,6 +25,7 @@ def rotationMatrixZ(angle):
     R[1,1] = c
     return R
 
+#rotates the model around x axis
 def rotationMatrixX(angle):
     c = np.cos(angle)
     s = np.sin(angle)
@@ -30,6 +36,7 @@ def rotationMatrixX(angle):
     R[2,2] = c
     return R
 
+#rotates the models around the y axis
 def rotationMatrixY(angle):
     c = np.cos(angle)
     s = np.sin(angle)

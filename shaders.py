@@ -293,22 +293,6 @@ class PhongShader(BaseShaderProgram):
     def unbind(self):
         glUseProgram(0)
 
-
-class FlatShader(PhongShader):
-    def __init__(self):
-        PhongShader.__init__(self, name='flat')
-
-
-class GouraudShader(PhongShader):
-    def __init__(self):
-        PhongShader.__init__(self, name='gouraud')
-
-
-class BlinnShader(PhongShader):
-    def __init__(self):
-        PhongShader.__init__(self, name='blinn')
-
-
 class TextureShader(PhongShader):
     def __init__(self):
         PhongShader.__init__(self, name='texture')

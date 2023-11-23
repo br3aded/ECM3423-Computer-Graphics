@@ -10,10 +10,7 @@ https://en.wikipedia.org/wiki/Wavefront_.obj_file
 '''
 
 def process_line(line):
-	'''
-	Function for reading the Blender3D object file, line by line. Clearly
-	minimalistic and slow as it is, but it will do the job nicely for this course.
-	'''
+	#Function for reading the Blender3D object file, line by line. 
 	label = None
 	fields = line.split()
 	if len(fields) == 0:
@@ -51,7 +48,6 @@ def process_line(line):
 		else:
 			return (label, fields[1])
 
-	# check this
 	elif fields[0] == 's':
 		label = 's???'
 		return None
@@ -119,10 +115,8 @@ def load_material_library(file_name):
 
 
 def load_obj_file(file_name):
-	'''
-	Function for loading a Blender3D object file. minimalistic, and partial,
-	but sufficient for this course. You do not really need to worry about it.
-	'''
+	#Function for loading a Blender3D object file.
+
 	#print('Loading mesh(es) from Blender file: {}'.format(file_name))
 
 	vlist = []	# list of vertices
@@ -188,7 +182,7 @@ def load_obj_file(file_name):
 			elif data[0] == 'material':
 				material = library.names[data[1]]
 				mesh_id += 1
-				print('[l.{}] Loading mesh with material: {}'.format(line_nb, data[1]))
+				#print('[l.{}] Loading mesh with material: {}'.format(line_nb, data[1]))
 
 	#print('File read. Found {} vertices and {} faces.'.format(len(vlist), len(flist)))
 
@@ -266,7 +260,6 @@ def fix_blender_textures(textures, faces, vertices):
 	:param faces: Blender faces multiple-index
 	:return: a new texture array indexed according to vertices.
 	'''
-	# (OpenGL, unlike Blender, does not allow for multiple indexing!)
 	if textures.size == 0:
 		return None
 

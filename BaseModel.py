@@ -42,16 +42,7 @@ class BaseModel:
 
         # mesh data
         self.mesh = mesh
-        if self.mesh.textures == 1:
-            self.mesh.textures.append(Texture('lena.bmp'))
-        #self.vertices = None
-        #self.indices = None
-        #self.normals = None
-        #self.vertex_colors = None
-        #self.textureCoords = None
-        #self.textures = []
-
-
+    
         # dict of VBOs
         self.vbos = {}
 

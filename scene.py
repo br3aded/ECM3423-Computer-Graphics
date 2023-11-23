@@ -29,8 +29,7 @@ class Scene:
         # by default, wireframe mode is off
         self.wireframe = False
 
-        # the first two lines initialise the pygame window. You could use another library for this,
-        # for example GLut or Qt
+        # the first two lines initialise the pygame window.
         pygame.init()
         screen = pygame.display.set_mode(self.window_size, pygame.OPENGL | pygame.DOUBLEBUF, 24)
 
@@ -40,21 +39,17 @@ class Scene:
         # this selects the background color
         glClearColor(0.7, 0.7, 1.0, 1.0)
 
-        # enable back face culling (see lecture on clipping and visibility
+        # enable back face culling 
         glEnable(GL_CULL_FACE)
-        # depending on your model, or your projection matrix, the winding order may be inverted,
-        # Typically, you see the far side of the model instead of the front one
-        # uncommenting the following line should provide an easy fix.
-        #glCullFace(GL_FRONT)
 
         # enable the vertex array capability
         glEnableClientState(GL_VERTEX_ARRAY)
 
-        # enable depth test for clean output (see lecture on clipping & visibility for an explanation
+        # enable depth test for clean output
         glEnable(GL_DEPTH_TEST)
 
-        # set the default shader program (can be set on a per-mesh basis)
-        self.shaders = 'flat'
+        # set the default shader program 
+        self.shaders = 'phong'
 
         # initialise the projective transform
         near = 1.5
@@ -81,50 +76,6 @@ class Scene:
 
         # This class will maintain a list of models to draw in the scene,
         self.models = []
-
-    def add_model(self, model):
-        '''
-        This method just adds a model to the scene.
-        :param model: The model object to add to the scene
-        :return: None
-        '''
-
-        # bind the default shader to the mesh
-        model.bind_shader(self.shaders)
-
-        # and add to the list
-        self.models.append(model)
-
-    def add_models_list(self, models_list):
-        '''
-        This method just adds a model to the scene.
-        :param model: The model object to add to the scene
-        :return: None
-        '''
-        for model in models_list:
-            self.add_model(model)
-
-    def draw(self):
-        '''
-        Draw all models in the scene
-        :return: None
-        '''
-
-        # first we need to clear the scene, we also clear the depth buffer to handle occlusions
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-        # ensure that the camera view matrix is up to date
-        self.camera.update()
-
-        # then we loop over all models in the list and draw them
-        for model in self.models:
-            model.draw()
-
-        # once we are done drawing, we display the scene
-        # Note that here we use double buffering to avoid artefacts:
-        # we draw on a different buffer than the one we display,
-        # and flip the two buffers once we are done drawing.
-        pygame.display.flip()
 
     def keyboard(self, event):
         '''
@@ -205,7 +156,9 @@ class Scene:
         while self.running:
             self.pygameEvents()
 
+            #used to update the dinosaur animation for clock tick rate
             #self.update_dinosaur_animation()
+
             # otherwise, continue drawing
             self.draw()
 
